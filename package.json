@@ -1,15 +1,19 @@
 {
   "name": "react-pouch-offline-first-spa",
   "version": "1.0.0",
-  "description": "",
+  "description": "Offline-First SPA using PouchDB and Redux.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "test": "echo \"No test specified\" && exit 0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/t-knapp/react-pouch-offline-first-spa"
+  },
   "keywords": [],
-  "author": "",
-  "license": "Apache v2",
+  "author": "t-knapp",
+  "license": "Apache-2.0",
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^7.1.2",
@@ -24,6 +28,8 @@
     "babel-preset-env": "^1.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2"
   }
 }
