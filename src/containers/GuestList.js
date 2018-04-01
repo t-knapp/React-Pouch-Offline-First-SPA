@@ -2,16 +2,21 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { fetchGuestList } from './../actions/GuestActions';
+
 @connect((store) => {
     return {
-        guests: store.guests
+        guests: store.GuestReducer.guests
     }
 })
 @withRouter
 export default class GuestList extends Component {
 
-    render() {
+    componentWillMount() {
+        this.props.dispatch(fetchGuestList());
+    }
 
+    render() {
         const rows = this.props.guests.map((guest) => 
             <tr>
                 <td>{guest.guestId}</td>

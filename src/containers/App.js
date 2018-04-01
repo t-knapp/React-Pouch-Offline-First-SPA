@@ -7,15 +7,7 @@ import Map from './Map';
 import GuestList from './GuestList';
 import GuestDetail from './GuestDetail';
 
-/*
-@connect((store) => {
-    return {
-        guests: store.guests
-    }
-})
-@withRouter
-*/
-class App extends Component {
+export default class App extends Component {
     render() {
         return (
             <div>
@@ -30,9 +22,3 @@ class App extends Component {
         );
     }
 }
-
-export default withRouter(connect((store) => {
-    return {
-        guests: store.guests
-    }
-})(App))
