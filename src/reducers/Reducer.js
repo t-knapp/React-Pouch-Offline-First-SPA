@@ -6,11 +6,18 @@ const initialState = {
             lastname: "Lastname",
             section: "Süd",
             state: "Waiting"
+        },
+        {
+            guestId: 443,
+            name: "Telang",
+            lastname: "Mona",
+            section: "Nord",
+            state: "Waiting"
         }
     ]
 }
  
-function Model(state, action) {
+function Reducer(state = initialState, action) {
     if (typeof state === 'undefined') {
         return initialState
     }
@@ -20,4 +27,4 @@ function Model(state, action) {
     return state
 }
 
-export default Model;
+export default Reducer;

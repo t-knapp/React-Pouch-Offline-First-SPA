@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
-import Link from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+@connect((store) => {
+    return {
+        guests: store.guests
+    }
+})
+@withRouter
 export default class GuestList extends Component {
 
     render() {
+
+        const rows = this.props.guests.map((guest) => 
+            <tr>
+                <td>{guest.guestId}</td>
+                <td>{guest.state}</td>
+                <td>{guest.lastname}, {guest.name}</td>
+                <td>{guest.section}</td>
+            </tr>
+        )
+
         return (
             <div>
                 <h2>GuestList</h2>
@@ -17,18 +34,7 @@ export default class GuestList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>3142</td>
-                            <td>Waiting</td>
-                            <td>Klopp, Jürgen</td>
-                            <td>West</td>
-                        </tr>
-                        <tr>
-                            <td>561</td>
-                            <td>Waiting</td>
-                            <td>Landa, Hans-Joachim</td>
-                            <td>Süd</td>
-                        </tr>
+                        {rows}
                     </tbody>
                 </table>
             </div>
