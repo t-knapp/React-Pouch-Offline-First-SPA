@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import randomstring from 'randomstring';
 
-import { fetchGuestList, addGuest } from './../actions/GuestActions';
+import { fetchGuestList, addGuest, deleteGuest } from './../actions/GuestActions';
 
 @connect((store) => {
     return {
@@ -17,16 +18,35 @@ export default class GuestList extends Component {
     }
 
     addGuest() {
-        this.props.dispatch(addGuest())
+        var newGuest = {
+            guestId: Math.floor(Math.random() * 1000),
+            name: randomstring.generate(7),
+            lastname: randomstring.generate(7),
+            section: "Nord",
+            state: "Waiting"
+        }
+        this.props.dispatch(addGuest(newGuest))
+    }
+
+    guestDetails(a, b, c) {
+        console.log('guestDetails', a, b, c);
+    }
+
+    deleteGuest(guestId) {
+        this.props.dispatch(deleteGuest(guestId));
     }
 
     render() {
         const rows = this.props.guests.map((guest) => 
-            <tr>
+            <tr key={guest.guestId}>
                 <td>{guest.guestId}</td>
                 <td>{guest.state}</td>
                 <td>{guest.lastname}, {guest.name}</td>
                 <td>{guest.section}</td>
+                <td>
+                    <button onClick={() => this.guestDetails(guest.guestId)}>Details</button>
+                    <button onClick={() => this.deleteGuest(guest.guestId)}>Delete</button>
+                </td>
             </tr>
         )
 
@@ -41,6 +61,7 @@ export default class GuestList extends Component {
                             <th>State</th>
                             <th>Lastname, Name</th>
                             <th>Section</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

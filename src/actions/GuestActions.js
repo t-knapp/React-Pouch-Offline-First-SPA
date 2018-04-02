@@ -1,15 +1,19 @@
+function r() {
+    return Math.floor(Math.random() * 1000000);
+}
+
 export function fetchGuestList() {
     return {
         type: "FETCH_GUESTLIST",
         payload: [{
-            guestId: 123,
+            guestId: r(),
             name: "Name",
             lastname: "Lastname",
             section: "Süd",
             state: "Waiting"
         },
         {
-            guestId: 443,
+            guestId: r(),
             name: "Telang",
             lastname: "Mona",
             section: "Nord",
@@ -18,15 +22,17 @@ export function fetchGuestList() {
     }
 }
 
-export function addGuest() {
+export function addGuest(newGuest) {
     return {
         type: "ADD_GUEST",
-        payload: {
-            guestId: 332,
-            name: "Add",
-            lastname: "Add+Mona",
-            section: "Nord",
-            state: "Waiting"
-        }
+        payload: newGuest
+    }
+}
+
+export function deleteGuest(guestId) {
+    console.log('deleteGuest', guestId);
+    return {
+        type: "DEL_GUEST",
+        payload: guestId
     }
 }
