@@ -28,8 +28,8 @@ export default class GuestList extends Component {
         this.props.dispatch(addGuest(newGuest))
     }
 
-    guestDetails(a, b, c) {
-        console.log('guestDetails', a, b, c);
+    guestDetails(guestId) {
+        this.props.history.push('/guestdetail/' + guestId);
     }
 
     deleteGuest(guestId) {

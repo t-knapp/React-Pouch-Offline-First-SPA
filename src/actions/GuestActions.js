@@ -30,7 +30,6 @@ export function addGuest(newGuest) {
 }
 
 export function deleteGuest(guestId) {
-    console.log('deleteGuest', guestId);
     return {
         type: "DEL_GUEST",
         payload: guestId
