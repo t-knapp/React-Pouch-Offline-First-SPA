@@ -17,3 +17,16 @@ export function fetchGuestList() {
         }]
     }
 }
+
+export function addGuest() {
+    return {
+        type: "ADD_GUEST",
+        payload: {
+            guestId: 332,
+            name: "Add",
+            lastname: "Add+Mona",
+            section: "Nord",
+            state: "Waiting"
+        }
+    }
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { fetchGuestList } from './../actions/GuestActions';
+import { fetchGuestList, addGuest } from './../actions/GuestActions';
 
 @connect((store) => {
     return {
@@ -14,6 +14,10 @@ export default class GuestList extends Component {
 
     componentWillMount() {
         this.props.dispatch(fetchGuestList());
+    }
+
+    addGuest() {
+        this.props.dispatch(addGuest())
     }
 
     render() {
@@ -29,6 +33,7 @@ export default class GuestList extends Component {
         return (
             <div>
                 <h2>GuestList</h2>
+                <button onClick={this.addGuest.bind(this)}>Add Guest</button>
                 <table>
                     <thead>
                         <tr>

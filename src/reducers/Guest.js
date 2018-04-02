@@ -12,7 +12,12 @@ export default function GuestReducer(state = initialGuestState, action) {
                 guests: state.guests.concat(action.payload)
             }
         }
-        default:
+        case "ADD_GUEST": {
+            return {
+                ...state,
+                guests: [...state.guests, action.payload]
+            }
+        }
     }
     
     return state;
